@@ -2,31 +2,40 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Maximize2, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "../lib/utils";
+import { cn, getImageUrl } from "../lib/utils";
+import { supabase } from "../lib/supabase";
 
-const categories = ["All", "Weddings", "Portraits", "Corporate", "Events", "Celebrities"];
-
-const galleryData = [
-  { id: 1, category: "Weddings", img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop", span: "row-span-2 col-span-1" },
-  { id: 2, category: "Portraits", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop", span: "row-span-1 col-span-1" },
-  { id: 3, category: "Corporate", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop", span: "row-span-1 col-span-2" },
-  { id: 4, category: "Events", img: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop", span: "row-span-2 col-span-1" },
-  { id: 5, category: "Celebrities", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop", span: "row-span-1 col-span-1" },
-  { id: 6, category: "Weddings", img: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?q=80&w=2070&auto=format&fit=crop", span: "row-span-1 col-span-1" },
-  { id: 7, category: "Portraits", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop", span: "row-span-2 col-span-1" },
-  { id: 8, category: "Events", img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2012&auto=format&fit=crop", span: "row-span-1 col-span-2" },
-];
-
-const albumsData = [
-  { id: 1, title: "The Adeyemi Wedding", date: "October 2023", photos: 450, img: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?q=80&w=2070&auto=format&fit=crop" },
-  { id: 2, title: "GTBank Gala", date: "December 2023", photos: 320, img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" },
-  { id: 3, title: "Lagos Fashion Week", date: "November 2023", photos: 600, img: "https://images.unsplash.com/photo-1509631179647-0c5000642f13?q=80&w=2070&auto=format&fit=crop" },
-];
+// We will fetch these from Supabase now
+// const categories = ["All", "Weddings", "Portraits", "Corporate", "Events", "Celebrities"];
+// Initial data arrays are removed since we load dynamically.
 
 export default function Gallery() {
   const [activeTab, setActiveTab] = useState("All");
-  const [filteredImages, setFilteredImages] = useState(galleryData);
+  const [galleryData, setGalleryData] = useState<any[]>([]);
+  const [albumsData, setAlbumsData] = useState<any[]>([]);
+  const [filteredImages, setFilteredImages] = useState<any[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchData() {
+      setLoading(true);
+      const [galleryRes, albumsRes] = await Promise.all([
+        supabase.from('gallery_images').select('*').order('created_at', { ascending: false }),
+        supabase.from('albums').select('*').order('created_at', { ascending: false })
+      ]);
+      
+      if (galleryRes.data) {
+        setGalleryData(galleryRes.data);
+        setFilteredImages(galleryRes.data);
+      }
+      if (albumsRes.data) {
+        setAlbumsData(albumsRes.data);
+      }
+      setLoading(false);
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     if (activeTab === "All") {
@@ -34,7 +43,7 @@ export default function Gallery() {
     } else {
       setFilteredImages(galleryData.filter(img => img.category === activeTab));
     }
-  }, [activeTab]);
+  }, [activeTab, galleryData]);
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -60,7 +69,7 @@ export default function Gallery() {
       <section className="py-12 border-b border-border dark:border-white/10">
         <div className="container mx-auto px-6 overflow-x-auto no-scrollbar">
           <div className="flex items-center justify-center space-x-2 md:space-x-4 min-w-max mx-auto">
-            {categories.map((cat) => (
+            {["All", ...Array.from(new Set(galleryData.map(img => img.category)))].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
@@ -81,23 +90,22 @@ export default function Gallery() {
       {/* Main Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6 md:px-12">
-          <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[250px]">
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 pb-12">
             <AnimatePresence>
               {filteredImages.map((item, index) => (
                 <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
                   key={item.id}
-                  className={cn("relative group overflow-hidden cursor-pointer bg-gray-100 dark:bg-gray-800", item.span)}
+                  className="break-inside-avoid inline-block w-full mb-6 relative group overflow-hidden cursor-pointer bg-gray-100 dark:bg-gray-800 rounded-sm"
                   onClick={() => openLightbox(index)}
                 >
                   <img 
-                    src={item.img} 
+                    src={getImageUrl(item.img)} 
                     alt={item.category} 
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto block object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 transition-colors duration-300 flex items-center justify-center">
@@ -109,7 +117,7 @@ export default function Gallery() {
                 </motion.div>
               ))}
             </AnimatePresence>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -121,7 +129,7 @@ export default function Gallery() {
             {albumsData.map(album => (
               <div key={album.id} className="bg-white dark:bg-[#050b14] border border-border dark:border-white/10 group cursor-pointer">
                 <div className="aspect-[3/2] overflow-hidden relative">
-                  <img src={album.img} alt={album.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
+                  <img src={getImageUrl(album.img)} alt={album.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
                   <div className="absolute bottom-4 right-4 bg-white dark:bg-[#050b14] px-3 py-1 text-xs font-medium text-black dark:text-white">
                     {album.photos} Photos
                   </div>
@@ -162,7 +170,7 @@ export default function Gallery() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
-              src={filteredImages[lightboxIndex].img} 
+              src={getImageUrl(filteredImages[lightboxIndex].img)} 
               alt="Lightbox View" 
               className="max-w-full max-h-full object-contain"
               onClick={(e) => e.stopPropagation()}

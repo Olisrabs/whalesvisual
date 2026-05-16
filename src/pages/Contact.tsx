@@ -171,7 +171,7 @@ export default function Contact() {
 
                 <div className="space-y-8">
                   <div className="flex items-start">
-                    <Phone className="text-primary mr-4 shrink-0 mt-1" size={20} />
+                    <Phone className="text-primary dark:text-white mr-4 shrink-0 mt-1" size={20} />
                     <div>
                       <h4 className="font-medium text-black dark:text-white mb-1">Phone</h4>
                       <a href="tel:+2348107572373" className="text-muted-text dark:text-gray-400 hover:text-primary transition-colors block">+234 810 757 2373</a>
@@ -179,7 +179,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start">
-                    <Mail className="text-primary mr-4 shrink-0 mt-1" size={20} />
+                    <Mail className="text-primary dark:text-white mr-4 shrink-0 mt-1" size={20} />
                     <div>
                       <h4 className="font-medium text-black dark:text-white mb-1">Email</h4>
                       <a href="mailto:abimbolaolawale014@gmail.com" className="text-muted-text dark:text-gray-400 hover:text-primary transition-colors block">abimbolaolawale014@gmail.com</a>
@@ -187,7 +187,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start">
-                    <MapPin className="text-primary mr-4 shrink-0 mt-1" size={20} />
+                    <MapPin className="text-primary dark:text-white mr-4 shrink-0 mt-1" size={20} />
                     <div>
                       <h4 className="font-medium text-black dark:text-white mb-1">Location</h4>
                       <p className="text-muted-text dark:text-gray-400">Lagos, Nigeria</p>
@@ -195,7 +195,7 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start">
-                    <Clock className="text-primary mr-4 shrink-0 mt-1" size={20} />
+                    <Clock className="text-primary dark:text-white mr-4 shrink-0 mt-1" size={20} />
                     <div>
                       <h4 className="font-medium text-black dark:text-white mb-1">Business Hours</h4>
                       <p className="text-muted-text dark:text-gray-400">Mon–Sat: 9am – 6pm WAT</p>

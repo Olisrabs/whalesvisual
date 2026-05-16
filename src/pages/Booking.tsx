@@ -86,7 +86,7 @@ export default function Booking() {
           
           {isSuccess ? (
             <div className="max-w-2xl mx-auto bg-surface dark:bg-[#0a1f44] p-12 text-center border border-border dark:border-white/10">
-              <CheckCircle2 size={64} className="text-primary mx-auto mb-6" />
+              <CheckCircle2 size={64} className="text-primary dark:text-white mx-auto mb-6" />
               <h3 className="text-3xl font-serif text-black dark:text-white mb-4">Request Received</h3>
               <p className="text-muted-text dark:text-gray-400 text-lg">
                 Your booking request has been successfully submitted. We'll confirm your session and reach out to you within 24 hours.

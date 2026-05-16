@@ -1,8 +1,20 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye, Star, Award, Zap, Heart } from "lucide-react";
 import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
+import { supabase } from "../lib/supabase";
+import { getImageUrl } from "../lib/utils";
 
 export default function About() {
+  const [celebrities, setCelebrities] = useState<any[]>([]);
+
+  useEffect(() => {
+    async function fetchCelebrities() {
+      const { data } = await supabase.from('celebrities').select('*').order('created_at', { ascending: false });
+      if (data) setCelebrities(data);
+    }
+    fetchCelebrities();
+  }, []);
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } }
@@ -44,7 +56,7 @@ export default function About() {
                 Whales Visual is a premium photography agency based in the heart of Lagos, Nigeria. Founded with a passion for authenticity, we specialize in capturing the nuanced beauty of human connection, the grandeur of celebrations, and the sharp aesthetics of modern brands.
               </p>
               <p className="text-lg text-muted-text dark:text-gray-400 mb-8 leading-relaxed">
-                Over the past 5 years, we have redefined visual narratives in Lagos by merging editorial sensibilities with documentary-style authenticity. Our approach is not just about taking pictures—it's about preserving legacies.
+                Over the past 5 years, we have redefined visual narratives in Lagos by merging editorial sensibilities with documentary-style authenticity. Our approach is not just about taking pictures, it's about preserving legacies.
               </p>
             </motion.div>
           </div>
@@ -62,7 +74,7 @@ export default function About() {
               variants={fadeInUp}
               className="bg-white dark:bg-[#050b14] p-10 border border-border"
             >
-              <Target size={32} className="text-primary mb-6" />
+              <Target size={32} className="text-primary dark:text-white mb-6" />
               <h3 className="text-2xl font-serif text-black dark:text-white mb-4">Our Mission</h3>
               <p className="text-muted-text dark:text-gray-400 leading-relaxed">
                 To provide unparalleled visual storytelling that elevates our clients' most significant moments. We strive to create images that evoke emotion, capture truth, and reflect the absolute highest standard of photographic excellence.
@@ -76,7 +88,7 @@ export default function About() {
               variants={fadeInUp}
               className="bg-white dark:bg-[#050b14] p-10 border border-border"
             >
-              <Eye size={32} className="text-primary mb-6" />
+              <Eye size={32} className="text-primary dark:text-white mb-6" />
               <h3 className="text-2xl font-serif text-black dark:text-white mb-4">Our Vision</h3>
               <p className="text-muted-text dark:text-gray-400 leading-relaxed">
                 To be the most sought-after premium photography brand in Africa, known for our artistic integrity, unwavering professionalism, and ability to transform fleeting moments into timeless masterpieces.
@@ -110,7 +122,7 @@ export default function About() {
                 custom={i}
                 className="text-center p-6"
               >
-                <div className="w-16 h-16 rounded-full bg-surface dark:bg-[#0a1f44] text-primary flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-surface dark:bg-[#0a1f44] text-primary dark:text-white flex items-center justify-center mx-auto mb-6">
                   {benefit.icon}
                 </div>
                 <h4 className="text-xl font-serif text-black dark:text-white mb-3">{benefit.title}</h4>
@@ -147,7 +159,7 @@ export default function About() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-start"
                   >
-                    <CheckCircle size={20} className="text-primary mt-1 mr-4 shrink-0" />
+                    <CheckCircle size={20} className="text-primary dark:text-white mt-1 mr-4 shrink-0" />
                     <span className="text-lg text-black dark:text-white">{item}</span>
                   </motion.li>
                 ))}
@@ -211,22 +223,17 @@ export default function About() {
           {/* Notable Works & Celebs */}
           <div className="mt-24">
             <h3 className="text-3xl font-serif text-black dark:text-white mb-8 text-center">Celebrity Spotlight & Notable Works</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {[
-                { name: "Tiwa Savage", title: "Artist / Performer", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" },
-                { name: "GTBank", title: "Corporate Gala", img: "https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" },
-                { name: "Lagos Fashion Week", title: "Runway Coverage", img: "https://images.unsplash.com/photo-1509631179647-0c5000642f13?q=80&w=2070&auto=format&fit=crop" },
-                { name: "Davido", title: "Exclusive Studio Session", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" },
-              ].map((item, i) => (
+            <div className={`flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 hide-scrollbar ${celebrities.length <= 4 ? 'md:grid md:grid-cols-4 md:flex-none' : ''}`}>
+              {celebrities.map((item, i) => (
                 <motion.div 
-                  key={i}
+                  key={item.id || i}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="group relative overflow-hidden aspect-square border border-white"
+                  className={`group relative overflow-hidden aspect-square border border-white shrink-0 snap-start ${celebrities.length <= 4 ? 'w-[75vw] sm:w-[45vw] md:w-auto' : 'w-[75vw] sm:w-[45vw] md:w-[300px]'}`}
                 >
-                  <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={getImageUrl(item.img)} alt={item.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <h4 className="text-white font-serif text-lg">{item.name}</h4>
                     <p className="text-white/80 text-sm">{item.title}</p>

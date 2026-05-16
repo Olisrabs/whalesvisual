@@ -1,7 +1,6 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+import { supabase } from '../lib/supabase';
 
 // ── Types ────────────────────────────────────────────────
-
 export interface ContactFormData {
   full_name: string;
   email: string;
@@ -31,39 +30,35 @@ export interface ApiResponse {
 // ── API Calls ─────────────────────────────────────────────
 
 export async function submitContactForm(data: ContactFormData): Promise<ApiResponse> {
-  const response = await fetch(`${API_BASE_URL}/contact`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
+  const { error } = await supabase
+    .from('contact_messages')
+    .insert([data]);
 
-  const result: ApiResponse = await response.json();
-
-  if (!response.ok) {
-    throw new Error(result.message || 'Failed to send message.');
+  if (error) {
+    console.error('Supabase contact insert error:', error);
+    throw new Error(error.message || 'Failed to send message.');
   }
 
-  return result;
+  return {
+    success: true,
+    message: 'Your message has been sent successfully! We will get back to you soon.',
+    data: data as unknown as Record<string, unknown>
+  };
 }
 
 export async function submitBookingForm(data: BookingFormData): Promise<ApiResponse> {
-  const response = await fetch(`${API_BASE_URL}/booking`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
+  const { error } = await supabase
+    .from('booking_requests')
+    .insert([data]);
 
-  const result: ApiResponse = await response.json();
-
-  if (!response.ok) {
-    throw new Error(result.message || 'Failed to submit booking.');
+  if (error) {
+    console.error('Supabase booking insert error:', error);
+    throw new Error(error.message || 'Failed to submit booking.');
   }
 
-  return result;
+  return {
+    success: true,
+    message: 'Your booking request has been submitted successfully!',
+    data: data as unknown as Record<string, unknown>
+  };
 }
