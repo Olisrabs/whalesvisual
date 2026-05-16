@@ -15,11 +15,11 @@ export default function Gallery() {
   const [albumsData, setAlbumsData] = useState<any[]>([]);
   const [filteredImages, setFilteredImages] = useState<any[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     async function fetchData() {
-      setLoading(true);
+
       const [galleryRes, albumsRes] = await Promise.all([
         supabase.from('gallery_images').select('*').order('created_at', { ascending: false }),
         supabase.from('albums').select('*').order('created_at', { ascending: false })
@@ -32,7 +32,7 @@ export default function Gallery() {
       if (albumsRes.data) {
         setAlbumsData(albumsRes.data);
       }
-      setLoading(false);
+
     }
     fetchData();
   }, []);
