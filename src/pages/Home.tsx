@@ -165,7 +165,7 @@ export default function Home() {
             >
               {[
                 { stat: "200+", label: "Shoots Completed" },
-                { stat: "5 Years", label: "Experience" },
+                { stat: "8 Years", label: "Experience" },
                 { stat: "50+", label: "Celebrity Clients" },
                 { stat: "#1 Rated", label: "In Lagos" }
               ].map((item, i) => (
