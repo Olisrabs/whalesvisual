@@ -4,17 +4,17 @@
 
 @layer base {
   :root {
-    --primary: #0a1f44;
+    --primary: #D4AF37;
     --background: #ffffff;
-    --surface: #f5f7fa;
+    --surface: #f9f9f9;
     --accent-text: #000000;
-    --muted-text: #4a4a4a;
-    --border: #dde3ec;
-    --cta-hover: #163366;
+    --muted-text: #555555;
+    --border: #e5e5e5;
+    --cta-hover: #b5952f;
   }
 
   body {
-    @apply bg-white dark:bg-[#050b14] text-black dark:text-white font-sans antialiased overflow-x-hidden transition-colors duration-300;
+    @apply bg-white dark:bg-[#111111] text-black dark:text-white font-sans antialiased overflow-x-hidden transition-colors duration-300;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -33,22 +33,22 @@
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #0a1f44;
+    background: #D4AF37;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-[#0a1f44] text-white px-6 py-3 rounded-none font-medium hover:bg-[#163366] transition-colors duration-300 dark:bg-white dark:text-[#0a1f44] dark:hover:bg-gray-200;
+    @apply bg-gradient-to-r from-[#D4AF37] to-[#b5952f] text-[#111111] px-8 py-3.5 rounded-sm font-semibold tracking-wide hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 transition-all duration-300;
   }
   .btn-outline {
-    @apply border border-[#0a1f44] text-[#0a1f44] px-6 py-3 rounded-none font-medium hover:bg-[#0a1f44] hover:text-white transition-colors duration-300 dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-[#050b14];
+    @apply border-2 border-[#D4AF37] text-[#D4AF37] bg-transparent px-8 py-3.5 rounded-sm font-semibold tracking-wide hover:bg-[#D4AF37] hover:text-[#111111] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:-translate-y-0.5 transition-all duration-300;
   }
   .nav-link {
-    @apply text-sm font-medium text-[#4a4a4a] hover:text-[#0a1f44] transition-colors duration-300 relative dark:text-gray-300 dark:hover:text-white;
+    @apply text-sm font-medium text-[#4a4a4a] hover:text-[#D4AF37] transition-colors duration-300 relative dark:text-gray-300 dark:hover:text-[#D4AF37];
   }
   .nav-link::after {
-    @apply content-[''] absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#0a1f44] transition-all duration-300 dark:bg-white;
+    @apply content-[''] absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 dark:bg-[#D4AF37];
   }
   .nav-link:hover::after {
     @apply w-full;

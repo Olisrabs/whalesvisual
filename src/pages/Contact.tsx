@@ -54,8 +54,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="bg-white dark:bg-[#050b14] pt-24 md:pt-32 min-h-screen">
-      <section className="py-16 bg-surface dark:bg-[#0a1f44] text-center px-6">
+    <div className="bg-white dark:bg-[#111111] pt-24 md:pt-32 min-h-screen">
+      <section className="py-16 bg-surface dark:bg-[#1a1a1a] text-center px-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-black dark:text-white mb-6">Get In Touch</h1>
         <p className="text-lg text-muted-text dark:text-gray-400 max-w-2xl mx-auto">Have a project in mind or a question about our services? We'd love to hear from you.</p>
       </section>
@@ -88,7 +88,7 @@ export default function Contact() {
                         type="text"
                         {...register("fullName")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-blue-900",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
                           errors.fullName ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -100,7 +100,7 @@ export default function Contact() {
                         type="email"
                         {...register("email")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-blue-900",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
                           errors.email ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -115,7 +115,7 @@ export default function Contact() {
                         type="tel"
                         {...register("phone")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-blue-900",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
                           errors.phone ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -126,7 +126,7 @@ export default function Contact() {
                       <select
                         {...register("subject")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#050b14] dark:text-blue-900",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#111111] dark:text-white",
                           errors.subject ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       >
@@ -146,7 +146,7 @@ export default function Contact() {
                       rows={5}
                       {...register("message")}
                       className={cn(
-                        "w-full px-4 py-3 border focus:outline-none transition-colors resize-none dark:text-blue-900",
+                        "w-full px-4 py-3 border focus:outline-none transition-colors resize-none dark:text-white",
                         errors.message ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                       )}
                     ></textarea>
@@ -166,7 +166,7 @@ export default function Contact() {
 
             {/* Contact Details */}
             <div className="lg:w-2/5">
-              <div className="bg-surface dark:bg-[#0a1f44] p-10 border border-border dark:border-white/10 h-full">
+              <div className="bg-surface dark:bg-[#1a1a1a] p-10 border border-border dark:border-white/10 h-full">
                 <h3 className="text-2xl font-serif text-black dark:text-white mb-8">Contact Information</h3>
 
                 <div className="space-y-8">
@@ -206,9 +206,9 @@ export default function Contact() {
                 <div className="mt-12 pt-8 border-t border-border dark:border-white/10">
                   <h4 className="font-medium text-black dark:text-white mb-4">Follow Us</h4>
                   <div className="flex space-x-4">
-                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all"><FaInstagram size={18} /></a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all"><FaFacebookF size={18} /></a>
-                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-primary hover:text-white hover:border-primary transition-all"><FaXTwitter size={18} /></a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaInstagram size={18} /></a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaFacebookF size={18} /></a>
+                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaXTwitter size={18} /></a>
                   </div>
                 </div>
               </div>

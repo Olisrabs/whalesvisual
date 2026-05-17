@@ -23,7 +23,7 @@ export default function About() {
 
 
   return (
-    <div className="bg-white dark:bg-[#050b14] pt-24 md:pt-32">
+    <div className="bg-white dark:bg-[#111111] pt-24 md:pt-32">
       {/* Introduction */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6 md:px-12">
@@ -34,14 +34,14 @@ export default function About() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="lg:w-1/2 relative"
             >
-              <div className="aspect-[4/5] bg-surface dark:bg-[#0a1f44] relative z-10 overflow-hidden">
+              <div className="aspect-[4/5] bg-surface dark:bg-[#1a1a1a] relative z-10 overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1554048612-b6a382103328?q=80&w=2070&auto=format&fit=crop" 
                   alt="Photography team" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 w-full h-full border-2 border-primary z-0 hidden md:block"></div>
+              <div className="absolute -bottom-6 -right-6 w-full h-full border-[3px] border-[#D4AF37] z-0 hidden md:block"></div>
             </motion.div>
             
             <motion.div 
@@ -64,7 +64,7 @@ export default function About() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-surface dark:bg-[#0a1f44]">
+      <section className="py-20 bg-surface dark:bg-[#1a1a1a]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div 
@@ -72,7 +72,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="bg-white dark:bg-[#050b14] p-10 border border-border"
+              className="bg-white dark:bg-[#111111] p-10 border border-border"
             >
               <Target size={32} className="text-primary dark:text-white mb-6" />
               <h3 className="text-2xl font-serif text-black dark:text-white mb-4">Our Mission</h3>
@@ -86,7 +86,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="bg-white dark:bg-[#050b14] p-10 border border-border"
+              className="bg-white dark:bg-[#111111] p-10 border border-border"
             >
               <Eye size={32} className="text-primary dark:text-white mb-6" />
               <h3 className="text-2xl font-serif text-black dark:text-white mb-4">Our Vision</h3>
@@ -99,7 +99,7 @@ export default function About() {
       </section>
 
       {/* Benefits */}
-      <section className="py-24 bg-white dark:bg-[#050b14]">
+      <section className="py-24 bg-white dark:bg-[#111111]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-serif text-black dark:text-white mb-4">The Whales Visual Experience</h2>
@@ -122,7 +122,7 @@ export default function About() {
                 custom={i}
                 className="text-center p-6"
               >
-                <div className="w-16 h-16 rounded-full bg-surface dark:bg-[#0a1f44] text-primary dark:text-white flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 rounded-full bg-surface dark:bg-[#1a1a1a] text-primary dark:text-white flex items-center justify-center mx-auto mb-6">
                   {benefit.icon}
                 </div>
                 <h4 className="text-xl font-serif text-black dark:text-white mb-3">{benefit.title}</h4>
@@ -134,7 +134,7 @@ export default function About() {
       </section>
 
       {/* Differentiators */}
-      <section className="py-20 border-t border-border bg-white dark:bg-[#050b14]">
+      <section className="py-20 border-t border-border bg-white dark:bg-[#111111]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="lg:w-1/3">
@@ -170,7 +170,7 @@ export default function About() {
       </section>
 
       {/* Meet the CEO */}
-      <section className="py-24 bg-surface dark:bg-[#0a1f44]">
+      <section className="py-24 bg-surface dark:bg-[#1a1a1a]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <motion.div 
@@ -213,7 +213,7 @@ export default function About() {
                 <h4 className="font-serif text-xl mb-4 text-black dark:text-white">Expertise</h4>
                 <div className="flex flex-wrap gap-2">
                   {["Portrait Photography", "Event Coverage", "Studio Lighting", "Post-Production", "Brand Storytelling"].map(skill => (
-                    <span key={skill} className="px-4 py-2 border border-border dark:border-white/10 text-sm text-black dark:text-white bg-white dark:bg-[#050b14]">{skill}</span>
+                    <span key={skill} className="px-4 py-2 border border-border dark:border-white/10 text-sm text-black dark:text-white bg-white dark:bg-[#111111]">{skill}</span>
                   ))}
                 </div>
               </div>

@@ -56,7 +56,7 @@ export default function Navbar() {
       <nav
         className={cn(
           "fixed top-4 inset-x-4 lg:inset-x-auto lg:left-1/2 lg:-translate-x-1/2 lg:w-full lg:max-w-5xl z-50 transition-all duration-300 rounded-full border border-white/40 dark:border-white/10",
-          isScrolled ? "bg-white/80 dark:bg-[#050b14]/80 backdrop-blur-lg shadow-lg py-3" : "bg-white/40 dark:bg-[#050b14]/40 backdrop-blur-md py-4 shadow-sm"
+          isScrolled ? "bg-white/80 dark:bg-[#111111]/80 backdrop-blur-lg shadow-lg py-3" : "bg-white/40 dark:bg-[#111111]/40 backdrop-blur-md py-4 shadow-sm"
         )}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
@@ -119,7 +119,7 @@ export default function Navbar() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", duration: 0.3 }}
-            className="fixed inset-0 z-[60] bg-white dark:bg-[#050b14] flex flex-col"
+            className="fixed inset-0 z-[60] bg-white dark:bg-[#111111] flex flex-col"
           >
             <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100 dark:border-white/10">
               <img

@@ -61,7 +61,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-white dark:bg-[#050b14]">
+    <div className="bg-white dark:bg-[#111111]">
       {/* Hero Section */}
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -71,7 +71,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-[#0a1f44]/55 mix-blend-multiply"></div>
+          <div className="absolute inset-0 bg-[#1a1a1a]/55 mix-blend-multiply"></div>
         </div>
         
         <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
@@ -89,10 +89,10 @@ export default function Home() {
               Premium photography and visual storytelling that elevates your brand and preserves your most cherished memories.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Link to="/booking" className="bg-primary text-white px-8 py-4 font-medium hover:bg-ctaHover transition-colors duration-300 w-full sm:w-auto">
+              <Link to="/booking" className="btn-primary w-full sm:w-auto">
                 Book a Shoot
               </Link>
-              <Link to="/gallery" className="text-white flex items-center font-medium hover:text-white/80 transition-colors w-full sm:w-auto justify-center group">
+              <Link to="/gallery" className="btn-outline flex items-center justify-center w-full sm:w-auto group">
                 View Our Work 
                 <ChevronRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -102,7 +102,7 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-24 md:py-32 bg-surface dark:bg-[#0a1f44]">
+      <section className="py-24 md:py-32 bg-surface dark:bg-[#1a1a1a]">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             initial="hidden"
@@ -123,7 +123,7 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {services.map((service, index) => (
-              <motion.div key={index} variants={fadeInUp} className="bg-white dark:bg-[#050b14] p-8 border-t-4 border-primary shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1 transition-transform duration-300">
+              <motion.div key={index} variants={fadeInUp} className="bg-white dark:bg-[#111111] p-8 border-t-4 border-primary shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] hover:-translate-y-1 transition-transform duration-300">
                 <div className="mb-6">{service.icon}</div>
                 <h3 className="text-xl font-serif text-black dark:text-white mb-3">{service.title}</h3>
                 <p className="text-muted-text dark:text-gray-400 leading-relaxed">{service.desc}</p>
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 md:py-32 bg-white dark:bg-[#050b14]">
+      <section className="py-24 md:py-32 bg-white dark:bg-[#111111]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <motion.div 
@@ -180,7 +180,7 @@ export default function Home() {
       </section>
 
       {/* Featured Work Teaser */}
-      <section className="py-24 md:py-32 bg-surface dark:bg-[#0a1f44]">
+      <section className="py-24 md:py-32 bg-surface dark:bg-[#1a1a1a]">
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex justify-between items-end mb-16">
             <motion.div 
@@ -229,7 +229,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 bg-white dark:bg-[#050b14]">
+      <section className="py-24 md:py-32 bg-white dark:bg-[#111111]">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             initial="hidden"
@@ -253,7 +253,7 @@ export default function Home() {
                 className="flex flex-col"
               >
                 {/* Chat Bubble Card */}
-                <div className="relative bg-white dark:bg-[#050b14] p-8 rounded-2xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.08)] mb-8 border border-border dark:border-white/10">
+                <div className="relative bg-white dark:bg-[#111111] p-8 rounded-2xl shadow-[0_4px_20px_-10px_rgba(0,0,0,0.08)] mb-8 border border-border dark:border-white/10">
                   <p className="text-lg font-serif italic text-black dark:text-white leading-relaxed mb-6">"{t.quote}"</p>
                   <div className="flex space-x-1">
                     {[...Array(Math.floor(t.rating))].map((_, idx) => (
@@ -267,7 +267,7 @@ export default function Home() {
                     ))}
                   </div>
                   {/* Bubble Tail */}
-                  <div className="absolute -bottom-3 left-8 w-6 h-6 bg-white dark:bg-[#050b14] border-b border-r border-border dark:border-white/10 transform rotate-45"></div>
+                  <div className="absolute -bottom-3 left-8 w-6 h-6 bg-white dark:bg-[#111111] border-b border-r border-border dark:border-white/10 transform rotate-45"></div>
                 </div>
                 
                 {/* Avatar and Info */}
@@ -302,12 +302,12 @@ export default function Home() {
       </section>
 
       {/* CTA Banner */}
-      <section className="bg-primary py-24">
+      <section className="bg-[#111111] py-24 border-t border-primary/20">
         <div className="container mx-auto px-6 md:px-12 text-center">
           <h2 className="text-3xl md:text-5xl font-serif text-white mb-8 max-w-3xl mx-auto leading-tight">
             Ready to create something beautiful together?
           </h2>
-          <Link to="/booking" className="inline-block bg-white text-primary px-8 py-4 font-medium hover:bg-surface transition-colors duration-300">
+          <Link to="/booking" className="btn-primary inline-block">
             Book Your Session
           </Link>
         </div>

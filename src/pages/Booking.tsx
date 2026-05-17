@@ -75,8 +75,8 @@ export default function Booking() {
   };
 
   return (
-    <div className="bg-white dark:bg-[#050b14] pt-24 md:pt-32 min-h-screen">
-      <section className="py-16 bg-surface dark:bg-[#0a1f44] text-center px-6">
+    <div className="bg-white dark:bg-[#111111] pt-24 md:pt-32 min-h-screen">
+      <section className="py-16 bg-surface dark:bg-[#1a1a1a] text-center px-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-black dark:text-white mb-6">Book a Session</h1>
         <p className="text-lg text-muted-text dark:text-gray-400 max-w-2xl mx-auto">Tell us about your vision. Fill out the form below to initiate the booking process, and we will get back to you within 24 hours.</p>
       </section>
@@ -85,7 +85,7 @@ export default function Booking() {
         <div className="container mx-auto px-6 md:px-12">
           
           {isSuccess ? (
-            <div className="max-w-2xl mx-auto bg-surface dark:bg-[#0a1f44] p-12 text-center border border-border dark:border-white/10">
+            <div className="max-w-2xl mx-auto bg-surface dark:bg-[#1a1a1a] p-12 text-center border border-border dark:border-white/10">
               <CheckCircle2 size={64} className="text-primary dark:text-white mx-auto mb-6" />
               <h3 className="text-3xl font-serif text-black dark:text-white mb-4">Request Received</h3>
               <p className="text-muted-text dark:text-gray-400 text-lg">
@@ -105,34 +105,34 @@ export default function Booking() {
                 <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                   
                   {/* Personal Details */}
-                  <div className="bg-surface dark:bg-[#0a1f44] p-8 border border-border dark:border-white/10">
+                  <div className="bg-surface dark:bg-[#1a1a1a] p-8 border border-border dark:border-white/10">
                     <h3 className="text-xl font-serif text-black dark:text-white mb-6 border-b border-border dark:border-white/10 pb-4">Personal Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Full Name *</label>
-                        <input type="text" {...register("fullName")} className={cn("w-full px-4 py-3 border focus:outline-none dark:text-blue-900", errors.fullName ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
+                        <input type="text" {...register("fullName")} className={cn("w-full px-4 py-3 border focus:outline-none text-black bg-white", errors.fullName ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
                         {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Email Address *</label>
-                        <input type="email" {...register("email")} className={cn("w-full px-4 py-3 border focus:outline-none dark:text-blue-900", errors.email ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
+                        <input type="email" {...register("email")} className={cn("w-full px-4 py-3 border focus:outline-none text-black bg-white", errors.email ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
                         {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
                       </div>
                       <div>
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Phone Number *</label>
-                        <input type="tel" {...register("phone")} className={cn("w-full px-4 py-3 border focus:outline-none dark:text-blue-900", errors.phone ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
+                        <input type="tel" {...register("phone")} className={cn("w-full px-4 py-3 border focus:outline-none text-black bg-white", errors.phone ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")} />
                         {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
                       </div>
                     </div>
                   </div>
 
                   {/* Session Details */}
-                  <div className="bg-surface dark:bg-[#0a1f44] p-8 border border-border dark:border-white/10">
+                  <div className="bg-surface dark:bg-[#1a1a1a] p-8 border border-border dark:border-white/10">
                     <h3 className="text-xl font-serif text-black dark:text-white mb-6 border-b border-border dark:border-white/10 pb-4">Session Details</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="md:col-span-2">
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Type of Event *</label>
-                        <select {...register("eventType")} className={cn("w-full px-4 py-3 border focus:outline-none bg-white dark:bg-[#050b14] dark:text-blue-900", errors.eventType ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")}>
+                        <select {...register("eventType")} className={cn("w-full px-4 py-3 border focus:outline-none bg-white text-black", errors.eventType ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")}>
                           <option value="">Select an event type...</option>
                           <option value="Wedding">Wedding</option>
                           <option value="Portrait Session">Portrait Session</option>
@@ -155,7 +155,7 @@ export default function Booking() {
                                 type="button"
                                 onClick={() => setIsCalendarOpen(!isCalendarOpen)}
                                 className={cn(
-                                  "w-full px-4 py-3 border flex justify-between items-center bg-white dark:bg-[#050b14] dark:text-blue-900",
+                                  "w-full px-4 py-3 border flex justify-between items-center bg-white text-black",
                                   errors.date ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary",
                                   !field.value && "text-gray-500"
                                 )}
@@ -164,14 +164,14 @@ export default function Booking() {
                                 <CalendarIcon size={18} className="text-muted-text dark:text-gray-400" />
                               </button>
                               {isCalendarOpen && (
-                                <div className="absolute top-full left-0 mt-2 bg-white dark:bg-[#050b14] border border-border dark:border-white/10 z-10 p-2 shadow-lg">
+                                <div className="absolute top-full left-0 mt-2 bg-white dark:bg-[#111111] border border-border dark:border-white/10 z-10 p-2 shadow-lg">
                                   <DayPicker
                                     mode="single"
                                     selected={field.value}
                                     onSelect={(e) => { field.onChange(e); setIsCalendarOpen(false); }}
                                     disabled={{ before: new Date() }}
                                     modifiersClassNames={{
-                                      selected: "bg-primary text-white hover:bg-primary hover:text-white",
+                                      selected: "bg-primary text-black hover:bg-primary hover:text-black",
                                       today: "font-bold text-primary"
                                     }}
                                   />
@@ -185,7 +185,7 @@ export default function Booking() {
 
                       <div>
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Preferred Time *</label>
-                        <select {...register("timePreference")} className={cn("w-full px-4 py-3 border focus:outline-none bg-white dark:bg-[#050b14] dark:text-blue-900", errors.timePreference ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")}>
+                        <select {...register("timePreference")} className={cn("w-full px-4 py-3 border focus:outline-none bg-white text-black", errors.timePreference ? "border-red-500" : "border-border dark:border-white/10 focus:border-primary")}>
                           <option value="">Select a time...</option>
                           <option value="Morning (8am–12pm)">Morning (8am–12pm)</option>
                           <option value="Afternoon (12pm–4pm)">Afternoon (12pm–4pm)</option>
@@ -204,13 +204,13 @@ export default function Booking() {
                       {watchNeedsTravel && (
                         <div className="md:col-span-2 animate-in fade-in slide-in-from-top-4 duration-300">
                           <label className="block text-sm font-medium text-black dark:text-white mb-2">Location Details *</label>
-                          <input type="text" {...register("locationDetails")} placeholder="e.g. Victoria Island, Lagos" className="w-full px-4 py-3 border border-border dark:border-white/10 focus:outline-none focus:border-primary dark:text-blue-900" />
+                          <input type="text" {...register("locationDetails")} placeholder="e.g. Victoria Island, Lagos" className="w-full px-4 py-3 border border-border dark:border-white/10 focus:outline-none focus:border-primary text-black bg-white" />
                         </div>
                       )}
 
                       <div className="md:col-span-2 pt-4">
                         <label className="block text-sm font-medium text-black dark:text-white mb-2">Additional Notes (Optional)</label>
-                        <textarea rows={4} {...register("notes")} className="w-full px-4 py-3 border border-border dark:border-white/10 focus:outline-none focus:border-primary resize-none dark:text-blue-900"></textarea>
+                        <textarea rows={4} {...register("notes")} className="w-full px-4 py-3 border border-border dark:border-white/10 focus:outline-none focus:border-primary resize-none text-black bg-white"></textarea>
                       </div>
                     </div>
                   </div>
@@ -223,8 +223,8 @@ export default function Booking() {
 
               {/* Sidebar Summary */}
               <div className="lg:w-1/3">
-                <div className="sticky top-32 bg-primary text-white p-8 border border-primary/20">
-                  <h3 className="text-2xl font-serif mb-6 border-b border-white/20 pb-4">Booking Summary</h3>
+                <div className="sticky top-32 bg-[#111111] text-white p-8 border border-primary/30">
+                  <h3 className="text-2xl font-serif mb-6 border-b border-primary/30 pb-4 text-white">Booking Summary</h3>
                   
                   <div className="space-y-4 text-sm">
                     <div>

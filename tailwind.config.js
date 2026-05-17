@@ -8,13 +8,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#0a1f44",
+        primary: "#D4AF37", // Gold
         background: "#ffffff",
-        surface: "#f5f7fa",
+        surface: "#f9f9f9",
         accentText: "#000000",
-        mutedText: "#4a4a4a",
-        border: "#dde3ec",
-        ctaHover: "#163366",
+        mutedText: "#555555",
+        border: "#e5e5e5",
+        ctaHover: "#b5952f", // Darker Gold
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

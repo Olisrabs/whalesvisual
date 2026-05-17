@@ -57,12 +57,12 @@ export default function Gallery() {
   };
 
   return (
-    <div className="bg-white dark:bg-[#050b14] pt-24 md:pt-32 min-h-screen">
+    <div className="bg-white dark:bg-[#111111] pt-24 md:pt-32 min-h-screen">
       {/* Header */}
-      <section className="py-16 bg-surface dark:bg-[#0a1f44] text-center px-6">
+      <section className="py-16 bg-surface dark:bg-[#1a1a1a] text-center px-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-black dark:text-gray-300 mb-6">Our Work</h1>
         <p className="text-lg text-muted-text dark:text-gray-400 max-w-2xl mx-auto mb-10">A curated collection of our finest moments, captured with intention and artful precision.</p>
-        <Link to="/booking" className="inline-block bg-transparent border-2 border-blue-600 dark:border-blue-400 text-blue-600 dark:text-blue-400 px-8 py-3 font-medium hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white dark:hover:text-[#050b14] transition-colors duration-300">Book a Shoot</Link>
+        <Link to="/booking" className="btn-outline inline-block mt-4">Book a Shoot</Link>
       </section>
 
       {/* Gallery Filter */}
@@ -76,8 +76,8 @@ export default function Gallery() {
                 className={cn(
                   "px-6 py-2 rounded-full text-sm font-medium transition-all duration-300",
                   activeTab === cat 
-                    ? "bg-primary text-white" 
-                    : "bg-surface text-muted-text dark:text-gray-400 hover:bg-gray-200"
+                    ? "bg-gradient-to-r from-[#D4AF37] to-[#b5952f] text-[#111111] font-bold shadow-md" 
+                    : "bg-surface text-muted-text dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800"
                 )}
               >
                 {cat}
@@ -122,15 +122,15 @@ export default function Gallery() {
       </section>
 
       {/* Client Albums */}
-      <section className="py-24 bg-surface dark:bg-[#0a1f44]">
+      <section className="py-24 bg-surface dark:bg-[#1a1a1a]">
         <div className="container mx-auto px-6 md:px-12">
           <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white mb-12 text-center">Client Albums</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {albumsData.map(album => (
-              <div key={album.id} className="bg-white dark:bg-[#050b14] border border-border dark:border-white/10 group cursor-pointer">
+              <div key={album.id} className="bg-white dark:bg-[#111111] border border-border dark:border-white/10 group cursor-pointer">
                 <div className="aspect-[3/2] overflow-hidden relative">
                   <img src={getImageUrl(album.img)} alt={album.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy"/>
-                  <div className="absolute bottom-4 right-4 bg-white dark:bg-[#050b14] px-3 py-1 text-xs font-medium text-black dark:text-white">
+                  <div className="absolute bottom-4 right-4 bg-white dark:bg-[#111111] px-3 py-1 text-xs font-medium text-black dark:text-white">
                     {album.photos} Photos
                   </div>
                 </div>
