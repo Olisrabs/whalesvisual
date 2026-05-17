@@ -69,6 +69,7 @@ export default function Home() {
             src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop" 
             alt="Photography Hero" 
             className="w-full h-full object-cover"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-[#0a1f44]/55 mix-blend-multiply"></div>
         </div>
