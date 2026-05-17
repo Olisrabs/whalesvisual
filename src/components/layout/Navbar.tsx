@@ -62,13 +62,9 @@ export default function Navbar() {
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <img
-              src={theme === "dark" ? "/src/assets/images/logo-white.png" : "/src/assets/images/logo-black.png"}
+              src={theme === "dark" ? "/logo-white.png" : "/logo-black.png"}
               alt="Whales Visual Logo"
               className="h-8 md:h-10 object-contain"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='serif' font-size='24' fill='%23000000'%3EWHALES VISUAL%3C/text%3E%3C/svg%3E";
-              }}
             />
           </Link>
 
@@ -127,15 +123,9 @@ export default function Navbar() {
           >
             <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100 dark:border-white/10">
               <img
-                src={theme === "dark" ? "/src/assets/images/logo-white.png" : "/src/assets/images/logo-black.png"}
+                src={theme === "dark" ? "/logo-white.png" : "/logo-black.png"}
                 alt="Whales Visual Logo"
                 className="h-8 object-contain"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = theme === "dark"
-                    ? "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='serif' font-size='24' fill='%23ffffff'%3EWHALES VISUAL%3C/text%3E%3C/svg%3E"
-                    : "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='60' viewBox='0 0 200 60'%3E%3Ctext x='10' y='40' font-family='serif' font-size='24' fill='%23000000'%3EWHALES VISUAL%3C/text%3E%3C/svg%3E";
-                }}
               />
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
