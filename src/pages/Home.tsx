@@ -209,12 +209,7 @@ export default function Home() {
                 className="relative aspect-[4/5] overflow-hidden group bg-gray-200 dark:bg-gray-800"
               >
                 <img src={getImageUrl(imgItem.img)} alt="Gallery feature" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/40 transition-colors duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center">
-                    <ImageIcon size={32} className="text-white mb-2" />
-                    <span className="text-white font-medium">View</span>
-                  </div>
-                </div>
+
               </motion.div>
             ))}
           </div>
