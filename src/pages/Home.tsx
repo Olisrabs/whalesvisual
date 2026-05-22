@@ -164,7 +164,7 @@ export default function Home() {
               className="lg:w-1/2 grid grid-cols-2 gap-6 w-full"
             >
               {[
-                { stat: "200+", label: "Shoots Completed" },
+                { stat: "500+", label: "Shoots Completed" },
                 { stat: "8 Years", label: "Experience" },
                 { stat: "50+", label: "Celebrity Clients" },
                 { stat: "#1 Rated", label: "In Lagos" }

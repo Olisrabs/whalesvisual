@@ -90,7 +90,7 @@ export default function Gallery() {
       {/* Main Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6 md:px-12">
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 pb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-12">
             <AnimatePresence>
               {filteredImages.map((item, index) => (
                 <motion.div
@@ -99,13 +99,13 @@ export default function Gallery() {
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4 }}
                   key={item.id}
-                  className="break-inside-avoid inline-block w-full mb-6 relative group overflow-hidden cursor-pointer bg-gray-100 dark:bg-gray-800 rounded-sm"
+                  className="relative group overflow-hidden cursor-pointer bg-gray-100 dark:bg-gray-800 rounded-sm aspect-[4/3]"
                   onClick={() => openLightbox(index)}
                 >
                   <img 
                     src={getImageUrl(item.img)} 
                     alt={item.category} 
-                    className="w-full h-auto block object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/50 transition-colors duration-300 flex items-center justify-center">

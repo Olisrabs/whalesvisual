@@ -36,7 +36,7 @@ export default function About() {
             >
               <div className="aspect-[4/5] bg-surface dark:bg-[#1a1a1a] relative z-10 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1554048612-b6a382103328?q=80&w=2070&auto=format&fit=crop" 
+                  src="/wder.webp" 
                   alt="Photography team" 
                   className="w-full h-full object-cover"
                 />
