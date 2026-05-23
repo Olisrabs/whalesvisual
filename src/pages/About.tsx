@@ -182,7 +182,7 @@ export default function About() {
             >
               <div className="aspect-[3/4] overflow-hidden border-4 border-white shadow-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" 
+                  src="/walex.webp" 
                   alt="CEO Portrait" 
                   className="w-full h-full object-cover"
                 />
@@ -197,10 +197,10 @@ export default function About() {
               className="lg:w-3/5"
             >
               <span className="text-sm font-medium uppercase tracking-widest text-primary mb-2 block">Lead Photographer & Founder</span>
-              <h2 className="text-4xl md:text-5xl font-serif text-black dark:text-white mb-2">Olisrab</h2>
+              <h2 className="text-4xl md:text-5xl font-serif text-black dark:text-white mb-2">Walex</h2>
               
               <div className="flex space-x-4 mb-8">
-                <a href="#" className="text-muted-text hover:text-black dark:hover:text-white transition-colors"><FaInstagram size={20} /></a>
+                <a href="https://www.instagram.com/4rael_photo?igsh=MXUzZng3ZWdmM3F0cA%3D%3D&utm_source=qr" className="text-muted-text hover:text-black dark:hover:text-white transition-colors"><FaInstagram size={20} /></a>
                 <a href="#" className="text-muted-text hover:text-black dark:hover:text-white transition-colors"><FaFacebookF size={20} /></a>
                 <a href="#" className="text-muted-text hover:text-black dark:hover:text-white transition-colors"><FaTwitter size={20} /></a>
               </div>
