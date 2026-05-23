@@ -21,6 +21,22 @@
     @apply font-serif text-black dark:text-white transition-colors duration-300;
   }
 
+  /* ── Form inputs: dark mode override ───────────────────────────────────
+     Browser user-agent stylesheets aggressively set input colors.
+     This global rule wins the specificity war for all form fields.       */
+  .dark input,
+  .dark select,
+  .dark textarea {
+    color: #ffffff !important;
+    background-color: #1a1a1a !important;
+    color-scheme: dark;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4) !important;
+  }
+
   /* Custom scrollbar for webkit */
   ::-webkit-scrollbar {
     width: 8px;

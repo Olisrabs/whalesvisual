@@ -88,7 +88,7 @@ export default function Contact() {
                         type="text"
                         {...register("fullName")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#1a1a1a] dark:text-white",
                           errors.fullName ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -100,7 +100,7 @@ export default function Contact() {
                         type="email"
                         {...register("email")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#1a1a1a] dark:text-white",
                           errors.email ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -115,7 +115,7 @@ export default function Contact() {
                         type="tel"
                         {...register("phone")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors dark:text-white",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#1a1a1a] dark:text-white",
                           errors.phone ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       />
@@ -126,7 +126,7 @@ export default function Contact() {
                       <select
                         {...register("subject")}
                         className={cn(
-                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#111111] dark:text-white",
+                          "w-full px-4 py-3 border focus:outline-none transition-colors bg-white dark:bg-[#1a1a1a] dark:text-white",
                           errors.subject ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                         )}
                       >
@@ -146,7 +146,7 @@ export default function Contact() {
                       rows={5}
                       {...register("message")}
                       className={cn(
-                        "w-full px-4 py-3 border focus:outline-none transition-colors resize-none dark:text-white",
+                        "w-full px-4 py-3 border focus:outline-none transition-colors resize-none bg-white dark:bg-[#1a1a1a] dark:text-white",
                         errors.message ? "border-red-500 focus:border-red-500" : "border-border dark:border-white/10 focus:border-primary"
                       )}
                     ></textarea>
