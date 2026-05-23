@@ -1,4 +1,5 @@
 import { supabase } from '../lib/supabase';
+import { sendContactEmail, sendBookingEmail } from './emailService';
 
 // ── Types ────────────────────────────────────────────────
 export interface ContactFormData {
@@ -30,6 +31,7 @@ export interface ApiResponse {
 // ── API Calls ─────────────────────────────────────────────
 
 export async function submitContactForm(data: ContactFormData): Promise<ApiResponse> {
+  // 1. Save to Supabase
   const { error } = await supabase
     .from('contact_messages')
     .insert([data]);
@@ -37,6 +39,14 @@ export async function submitContactForm(data: ContactFormData): Promise<ApiRespo
   if (error) {
     console.error('Supabase contact insert error:', error);
     throw new Error(error.message || 'Failed to send message.');
+  }
+
+  // 2. Send email notification via EmailJS (non-blocking — failure won't stop the success response)
+  try {
+    await sendContactEmail(data);
+  } catch (emailError) {
+    console.error('EmailJS contact send error:', emailError);
+    // We still consider this a success since data was saved; email is best-effort
   }
 
   return {
@@ -47,6 +57,7 @@ export async function submitContactForm(data: ContactFormData): Promise<ApiRespo
 }
 
 export async function submitBookingForm(data: BookingFormData): Promise<ApiResponse> {
+  // 1. Save to Supabase
   const { error } = await supabase
     .from('booking_requests')
     .insert([data]);
@@ -54,6 +65,13 @@ export async function submitBookingForm(data: BookingFormData): Promise<ApiRespo
   if (error) {
     console.error('Supabase booking insert error:', error);
     throw new Error(error.message || 'Failed to submit booking.');
+  }
+
+  // 2. Send email notification via EmailJS
+  try {
+    await sendBookingEmail(data);
+  } catch (emailError) {
+    console.error('EmailJS booking send error:', emailError);
   }
 
   return {
