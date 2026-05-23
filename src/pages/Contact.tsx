@@ -206,7 +206,7 @@ export default function Contact() {
                 <div className="mt-12 pt-8 border-t border-border dark:border-white/10">
                   <h4 className="font-medium text-black dark:text-white mb-4">Follow Us</h4>
                   <div className="flex space-x-4">
-                    <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaInstagram size={18} /></a>
+                    <a href="https://www.instagram.com/4rael_photo?igsh=MXUzZng3ZWdmM3F0cA%3D%3D&utm_source=qr" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaInstagram size={18} /></a>
                     <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaFacebookF size={18} /></a>
                     <a href="#" className="w-10 h-10 rounded-full border border-border dark:border-white/10 flex items-center justify-center text-muted-text dark:text-gray-400 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#b5952f] hover:text-[#111111] hover:border-transparent transition-all"><FaXTwitter size={18} /></a>
                   </div>
